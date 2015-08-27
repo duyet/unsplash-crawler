@@ -7,30 +7,7 @@ var unsplash_url = 'http://unsplash.com';
 
 var Images = mongoose.model('Images', { image_link: { type: String, unique: true }, author: String, author_link: String });
 
-module.exports = {
-	crawl: function(options, callback) {
-		if(!options) {
-			return callback(new Error('options are not defined'));
-		}
-
-		var start_page = options.start_page ? options.start_page : 1;
-		var end_page = options.end_page ? options.end_page : 5;
-
-		var db_name = options.db_name ? options.db_name : 'unsplash-collections';
-		mongoose.connect('mongodb://localhost/' + db_name);
-
-		var pages = [];
-		for (var i = start_page; i <= end_page; i++) {
-			pages.push(i);
-		}
-
-		async.each(pages, perPage, function (err) {
-			callback(err);
-		});
-	}
-};
-
-function perPage(page, callback) {
+var onPerPage = function(page, callback) {
 	request(unsplash_url + '?page=' + page, function(error, response, body) {
 		if(error) {
 			callback(error);
@@ -57,4 +34,30 @@ function perPage(page, callback) {
 			callback(new Error('Could not request unsplash'));
 		}
 	});
-}
+};
+
+var crawl = function(options, callback) {
+	if(!options) {
+		return callback(new Error('options are not defined'));
+	}
+
+	var start_page = options.start_page ? options.start_page : 1;
+	var end_page = options.end_page ? options.end_page : 5;
+
+	var db_name = options.db_name ? options.db_name : 'unsplash-collections';
+	mongoose.connect('mongodb://localhost/' + db_name);
+
+	var pages = [];
+	for (var i = start_page; i <= end_page; i++) {
+		pages.push(i);
+	}
+
+	async.each(pages, onPerPage, function (err) {
+		callback(err);
+	});
+};
+
+// Start 
+crawl(require('./config'), function(err) {
+	if (err) console.log(err);
+});
