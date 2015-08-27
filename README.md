@@ -22,14 +22,15 @@ Open the *config.js* file and custom your config.
 nano config.js # Open the config.js file 
 ````
 
-!()[http://i.imgur.com/b9jZtYi.png]
+<img src="http://i.imgur.com/b9jZtYi.png" />
 
 4 - Let's do it!
 ````sh
 node index.js
 ````
 
-!()[http://i.imgur.com/R3vX2D3.png]
+<img src="http://i.imgur.com/R3vX2D3.png" />
+
 
 # How to contribute
 
