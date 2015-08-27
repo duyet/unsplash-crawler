@@ -1,22 +1,22 @@
 {
-    "name": "unsplash-crawl",
+    "name": "unsplash-crawler",
     "version": "0.0.1",
     "description": "Crawl all images from unsplash",
     "repository": {
         "type": "git",
-        "url": "git://github.com/chirag04/unsplash-crawl.git"
+        "url": "https://github.com/duyetdev/unsplash-crawler"
     },
     "dependencies": {
         "request": "*",
         "cheerio": "*",
         "async": "*"
     },
-    "homepage": "https://github.com/chirag04/unsplash-crawl",
-    "keywords": ["unsplash","crawler"],
+    "homepage": "https://github.com/duyetdev/unsplash-crawler",
+    "keywords": ["unsplash","crawler", "duyetdev","crawl"],
     "author": {
-        "name": "Chirag Jain",
-        "email": "jain_chirag04@yahoo.com",
-        "url": "http://chiragjain.tumblr.com"
+        "name": "Van-Duyet Le,
+        "email": "me@duyetdev.com",
+        "url": "http://duyetdev.com"
     },
     "license": "MIT"
 }
