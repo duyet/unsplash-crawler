@@ -4,8 +4,9 @@ var async = require('async');
 var mongoose = require('mongoose');
 
 var unsplash_url = 'http://unsplash.com';
-
 var Images = mongoose.model('Images', { image_link: { type: String, unique: true }, author: String, author_link: String });
+
+var record = 0;
 
 var onPerPage = function(page, callback) {
 	request(unsplash_url + '?page=' + page, function(error, response, body) {
@@ -23,8 +24,8 @@ var onPerPage = function(page, callback) {
 					image.author_link = unsplash_url + $(this).attr('href');
 					var s = new Images(image);
 					s.save(function (err, model) {
-						if (err) console.log("Error, skip!");
-						else console.log('Saved ', model.image_link);
+						if (err) console.log("Error, skip: ", image.image_link);
+						else console.log((record++) + ' - Saved ', model.image_link);
 					});
 				}
 			});

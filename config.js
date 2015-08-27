@@ -3,7 +3,7 @@ module.exports = {
 	start_page: 1,
 
 	// Limit to end page
-	end_page: 1,
+	end_page: 100,
 
 	// Mongodb database name 
 	db_name: 'unsplash-collections',
