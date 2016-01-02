@@ -1,4 +1,6 @@
 module.exports = {
+	save_to: 'db', // [ 'db', 'disk' ]
+
 	// The start page
 	start_page: 1,
 
@@ -7,4 +9,7 @@ module.exports = {
 
 	// Mongodb database name 
 	db_name: 'unsplash-collection',
+
+	// Folder name
+	folder_name: 'downloaded'
 }
